@@ -64,8 +64,8 @@ export default {
   overflow: hidden;
 }
 .article-image img {
-  object-fit: contain;
-  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
   transform: scale(125%);
 }
 .title {
