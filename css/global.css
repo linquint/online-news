@@ -38,7 +38,7 @@ body {
   z-index: -1;
   top: 0;
   left: 100vw;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 * {
