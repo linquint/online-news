@@ -10,5 +10,9 @@ export default defineNuxtConfig({
                 }
             ]
         }
-    }
+    },
+    css: [
+        '@/css/global.css',
+        '@/css/animations.css'
+    ]
 })

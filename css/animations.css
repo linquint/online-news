@@ -1,0 +1,20 @@
+@keyframes appear {
+  to { 
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+@keyframes imageZoomOut {
+  to {
+    transform: scale(100%);
+  }
+}
+@keyframes backgroundEnter {
+  to {
+    left: 0;
+  }
+}
+@keyframes backgroundLeave {
+  from { left: 0; }
+  to { left: 100vw; }
+}

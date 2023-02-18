@@ -1,0 +1,111 @@
+:root {
+  --isabelline: #f9f4ec;
+  --bright-gray: #eaeaea;
+  --electric-brown: #b0695c;
+  --charleston-green: #2a2a2a;
+  --electric-brown-pastel: rgba(200,165,158,1);
+  --light-background: linear-gradient(60deg, rgba(215,180,173,1) 0%, rgba(249,244,236,1) 20%, rgba(249,244,236,1) 60%, rgba(215,180,173,1) 100%);
+  --dark-background: linear-gradient(60deg, rgba(80,62,56,1) 0%, rgba(42,42,42,1) 20%, rgba(42,42,42,1) 75%, rgba(80,62,56,1) 100%);
+}
+.dark-theme {
+  --text: var(--bright-gray) !important;
+  --text-invert: var(--charleston-green) !important;
+  --elements: var(--electric-brown) !important;
+  --background: var(--dark-background) !important;
+  --background-compatible: var(--charleston-green) !important;
+}
+.light-theme {
+  --text: var(--charleston-green);
+  --text-invert: var(--bright-gray);
+  --elements: var(--electric-brown);
+  --background: var(--light-background);
+  --background-compatible: var(--isabelline);
+}
+.container {
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--isabelline);
+  background: var(--light-background);
+  overflow-x: hidden;
+}
+.curtain {
+  background: var(--charleston-green);
+  background: var(--dark-background);
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 100vw;
+  height: 100vh;
+  width: 100vw;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: all 1.25s ease-in-out;
+}
+main {
+  width: clamp(256px, 90%, 1440px);
+  margin: 0 auto;
+  color: var(--text);
+}
+nav *:not(div) {
+  opacity: 0;
+}
+main > *:not(.news-area) {
+  opacity: 0;
+}
+h1 {
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+nav {
+  display: flex;
+  flex: row nowrap;
+  justify-content: space-between;
+  padding: 1em 0;
+  width: clamp(256px, 90%, 1440px);
+  margin: auto;
+}
+nav div {
+  display: inherit;
+  align-items: center;
+  gap: 1.5em;
+}
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 400;
+  font-size: 0.8rem;
+  transition: all .2s;
+}
+nav a.router-link-active {
+  color: var(--elements);
+}
+nav input[type=checkbox] {
+  appearance: none;
+  background-color: var(--text);
+  cursor: pointer;
+  width: 3em;
+  height: 2em;
+  border-radius: 1.5em;
+}
+nav input[type=checkbox]::before {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--text-invert);
+  content: "";
+  position: relative;
+  top: 0.5em;
+  left: 0.5em;
+  width: calc(1em);
+  height: calc(1em);
+  transition: all .2s;
+}
+nav input[type=checkbox]:checked::before {
+  transform: translateX(1em);
+}

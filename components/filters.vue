@@ -23,7 +23,6 @@ export default {
       default: ""
     }
   },
-  emits: ['filter', ],
   data() {
     return {
       selected: -1,
@@ -33,20 +32,23 @@ export default {
     handleClick(id: number) {
       id = (id == this.selected) ? -1 : id;
       this.selected = id;
-      this.resetOpacity();
       if (id == -1) this.$router.push(`/`);
       else this.$router.push(`${this.path}/?filter=${this.options[id].toLowerCase()}`);
     },
-    resetOpacity() {
-      const objects = document.querySelectorAll('.news-area > *');
-      if (objects != null) {
-        objects.forEach((item) => {
-          item.style.animation = `none`;
-          item.style.opacity = 0;
-        })
-      }
-    }
+    findFilterID(str: String) {
+      let filterID = -1;
+      this.options.forEach((name, id) => {
+        if (name.toLowerCase() === str) {
+          filterID = id;
+          return;
+        }
+      });
+      return filterID;
+    },
   },
+  mounted() {
+    this.selected = this.findFilterID(this.$route.query.filter?.toString()) ?? -1;
+  }
 }
 </script>
 
@@ -57,6 +59,7 @@ export default {
   gap: 0.5em;
   overflow-x: scroll;
   scrollbar-width: none;
+  transform: translateX(-1em);
 }
 .filter-chips::-webkit-scrollbar { 
   display: none; 

@@ -1,6 +1,8 @@
 <template>
   <div class="article">
-    <img v-if="article.image != null" :src="article.image">
+    <div class="article-image">
+      <img v-if="article.image != null" :src="article.image">
+    </div>
     <span class="title">{{ article.title }}</span>
     <span class="content">
       {{ article.body }}
@@ -40,9 +42,6 @@ export default {
   },
   methods: {
     postedTimeAgo() {
-      console.log(new Date().getTime());
-      console.log(new Date(this.article.posted).getTime());
-
       let seconds = Math.round((new Date().getTime() - new Date(this.article.posted).getTime()) / 1000);
       if (seconds > (60 * 60 * 24)) return `${Math.floor(seconds / (60 * 60 * 24))}d ago`;
       if (seconds > (60 * 60)) return `${Math.floor(seconds / (60 * 60))}h ago`;
@@ -60,9 +59,14 @@ export default {
   gap: 0.75em;
   opacity: 0;
 }
-.article > img {
+.article-image {
+  position: relative;
+  overflow: hidden;
+}
+.article-image img {
   object-fit: contain;
   max-width: 100%;
+  transform: scale(125%);
 }
 .title {
   font-size: 1.25rem;
