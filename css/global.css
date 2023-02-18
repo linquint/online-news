@@ -34,7 +34,7 @@ body {
 .curtain {
   background: var(--charleston-green);
   background: var(--dark-background);
-  position: absolute;
+  position: fixed;
   z-index: -1;
   top: 0;
   left: 100vw;
